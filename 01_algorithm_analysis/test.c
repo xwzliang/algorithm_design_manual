@@ -20,9 +20,19 @@ void test_insertion_sort() {
 	TEST_ASSERT_EQUAL_INT_ARRAY(expect, arr, arr_num);
 }
 
+void test_findmatch() {
+	char * pattern1 = "awesome";
+	char * pattern2 = "hello";
+	char * text = "This is awesome";
+
+	TEST_ASSERT_EQUAL_INT(8, findmatch(pattern1, text));
+	TEST_ASSERT_EQUAL_INT(-1, findmatch(pattern2, text));
+}
+
 int main() {
 	UNITY_BEGIN();
 	RUN_TEST(test_selection_sort);
 	RUN_TEST(test_insertion_sort);
+	RUN_TEST(test_findmatch);
 	return UNITY_END();
 }
