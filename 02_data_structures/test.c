@@ -15,6 +15,12 @@ void test_linked_list() {
 
 	TEST_ASSERT_EQUAL(8, head->item);
 	TEST_ASSERT_EQUAL(5, head->next->item);
+
+	insert_list(&head, 13);
+	delete_list(&head, 8);
+
+	TEST_ASSERT_EQUAL(13, head->item);
+	TEST_ASSERT_EQUAL(5, head->next->item);
 }
 
 int main() {
