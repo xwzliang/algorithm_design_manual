@@ -5,11 +5,16 @@
 
 void test_linked_list() {
 	list test_list = {5, NULL};
-	list *pl = &test_list;
+	list *head = &test_list;
 
 	TEST_ASSERT_EQUAL(5, test_list.item);
-	TEST_ASSERT_EQUAL(5, search_list(pl, 5)->item);
-	TEST_ASSERT_EQUAL(NULL, search_list(pl, 4));
+	TEST_ASSERT_EQUAL(5, search_list(head, 5)->item);
+	TEST_ASSERT_EQUAL(NULL, search_list(head, 4));
+
+	insert_list(&head, 8);
+
+	TEST_ASSERT_EQUAL(8, head->item);
+	TEST_ASSERT_EQUAL(5, head->next->item);
 }
 
 int main() {
