@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unity.h>
 #include "item_type.h"
+#include "03_priority_queue.h"
 #include "test.h"
 
 void test_linked_list() {
@@ -42,9 +43,26 @@ void test_binary_search_tree() {
 	TEST_ASSERT_EQUAL(-6, find_minimum(ptr_to_root)->item);
 }
 
+void test_priority_queue() {
+	priority_queue q;
+	pq_init(&q);
+	int item_num = 4;
+	int item_arr[] = {5, 3, 1, 4};
+
+	make_heap(&q, item_arr, item_num);
+
+	int expect_arr[] = {1, 4, 3, 5};
+	TEST_ASSERT_EQUAL_INT_ARRAY(q.arr+1, expect_arr, item_num);	// The first 0 is default, start with index 1
+
+	int expect_arr_new[] = {3, 4, 5};
+	TEST_ASSERT_EQUAL(1, extract_min(&q));
+	TEST_ASSERT_EQUAL_INT_ARRAY(q.arr+1, expect_arr_new, item_num-1);
+}
+
 int main() {
 	UNITY_BEGIN();
 	RUN_TEST(test_linked_list);
 	RUN_TEST(test_binary_search_tree);
+	RUN_TEST(test_priority_queue);
 	return UNITY_END();
 }
