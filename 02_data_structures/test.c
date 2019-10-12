@@ -2,6 +2,7 @@
 #include <unity.h>
 #include "item_type.h"
 #include "03_priority_queue.h"
+#include "04_queue.h"
 #include "test.h"
 
 void test_linked_list() {
@@ -59,10 +60,25 @@ void test_priority_queue() {
 	TEST_ASSERT_EQUAL_INT_ARRAY(q.arr+1, expect_arr_new, item_num-1);
 }
 
+void test_queue() {
+	queue q;
+	init_queue(&q);
+	enqueue(&q, 1);
+	TEST_ASSERT_EQUAL(0, empty_queue(&q));
+	TEST_ASSERT_EQUAL(1, head_queue(&q));
+	enqueue(&q, 2);
+	TEST_ASSERT_EQUAL(1, dequeue(&q));
+	TEST_ASSERT_EQUAL(2, head_queue(&q));
+	TEST_ASSERT_EQUAL(0, empty_queue(&q));
+	TEST_ASSERT_EQUAL(2, dequeue(&q));
+	TEST_ASSERT_EQUAL(1, empty_queue(&q));
+}
+
 int main() {
 	UNITY_BEGIN();
 	RUN_TEST(test_linked_list);
 	RUN_TEST(test_binary_search_tree);
 	RUN_TEST(test_priority_queue);
+	RUN_TEST(test_queue);
 	return UNITY_END();
 }
