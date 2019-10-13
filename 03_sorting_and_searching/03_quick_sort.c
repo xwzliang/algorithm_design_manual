@@ -10,8 +10,7 @@ int quick_sort_partition(item_type item_arr[], int index_low, int index_high) {
 	index_partition_sorted = index_low;
 	for (i = index_low; i < index_high; i++)
 		if (item_arr[i] < item_arr[index_partition_original]) {
-			if (i != index_partition_sorted)
-				swap(&item_arr[i], &item_arr[index_partition_sorted]);
+			swap(&item_arr[i], &item_arr[index_partition_sorted]);
 			index_partition_sorted++;
 		}
 	swap(&item_arr[index_partition_original], &item_arr[index_partition_sorted]);
