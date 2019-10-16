@@ -24,7 +24,11 @@ void insert_tree(tree **ptr_ptr, item_type x, tree *parent) {
 	tree *p;	// temporary pointer
 
 	if (*ptr_ptr == NULL) {
-		p = malloc(sizeof(tree));	// allocate new node
+		/* p = malloc(sizeof(tree));	// allocate new node */
+		if ( (p = malloc(sizeof(tree))) == NULL ) {
+			printf("Memory exhausted!\n");
+			exit(1);
+		}
 		p->item = x;
 		p->left = p->right = NULL;
 		p->parent = parent;

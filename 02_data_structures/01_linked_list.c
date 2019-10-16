@@ -20,7 +20,10 @@ list *search_list(list *l, item_type x) {
 void insert_list(list **ptr_to_head, item_type x) {
 	list *p;	// temporary pointer
 
-	p = malloc(sizeof(list));
+	if ( (p = malloc(sizeof(list))) == NULL ) {
+		printf("Memory exhausted!\n");
+		exit(1);
+	}
 	p->item = x;
 	p->next = *ptr_to_head;
 	/* Insertion at the beginning of the list avoids any need to traverse the list, but does require us to update the pointer to the head of the data structure. */
