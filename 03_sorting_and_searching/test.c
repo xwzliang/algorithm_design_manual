@@ -30,10 +30,18 @@ void test_quick_sort() {
 	TEST_ASSERT_EQUAL_INT_ARRAY(expect, arr, arr_num);
 }
 
+void test_binary_search() {
+	int arr_num = 10;
+	int arr[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	TEST_ASSERT_EQUAL(9, binary_search(arr, 9, 0, arr_num-1));
+	TEST_ASSERT_EQUAL(3, binary_search(arr, 3, 0, arr_num-1));
+}
+
 int main() {
 	UNITY_BEGIN();
 	RUN_TEST(test_heap_sort);
 	RUN_TEST(test_merge_sort);
 	RUN_TEST(test_quick_sort);
+	RUN_TEST(test_binary_search);
 	return UNITY_END();
 }
