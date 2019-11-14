@@ -8,6 +8,8 @@ static int stdout_bk; 	// is fd for stdout backup
 static int pipefd[2];
 static char buf[1001];
 
+static graph g;
+
 void stdout_capture_start() {
 	fflush(stdout);		//flushall();
 	stdout_bk = dup(fileno(stdout));
@@ -29,7 +31,6 @@ void stdout_capture_finish() {
 }
 
 void test_build_graph() {
-	graph g;
 	int is_directed = 0;
 
 	initialize_graph(&g, is_directed);
@@ -48,8 +49,28 @@ void test_build_graph() {
 	TEST_ASSERT_EQUAL_STRING(expect, buf);
 }
 
+void test_breadth_first_search() {
+	int start_vertex = 1;
+	stdout_capture_start();
+	breadth_first_search(&g, start_vertex);
+	stdout_capture_finish();
+
+	char *expect =
+		"processed vertex 1\n"
+		"processed edge (1, 4)\n"
+		"processed edge (1, 2)\n"
+		"processed vertex 4\n"
+		"processed edge (4, 3)\n"
+		"processed vertex 2\n"
+		"processed edge (2, 3)\n"
+		"processed vertex 3\n"
+	;
+	TEST_ASSERT_EQUAL_STRING(expect, buf);
+}
+
 int main() {
 	UNITY_BEGIN();
 	RUN_TEST(test_build_graph);
+	RUN_TEST(test_breadth_first_search);
 	return UNITY_END();
 }
