@@ -8,3 +8,4 @@ void process_vertex_late(int vertex);
 void process_edge(int vertex, int vertex_successor);
 void breadth_first_search(graph *graph_ptr, int start_vertex);
 void find_path(int start_vertex, int end_vertex, int parents[]);
+void depth_first_search(graph *graph_ptr, int start_vertex);

@@ -9,6 +9,9 @@ bool is_processed[MAX_VERTICES_NUM+1];		// which vertices have been processed or
 bool is_discovered[MAX_VERTICES_NUM+1];		// which vertices have been discovered or not
 int parent[MAX_VERTICES_NUM+1];		// discovery relation tree
 
+int entry_time[MAX_VERTICES_NUM+1];	
+int exit_time[MAX_VERTICES_NUM+1];	
+
 void initialize_search(graph *graph_ptr) {
 	int i;
 
@@ -36,6 +39,7 @@ void breadth_first_search(graph *graph_ptr, int start_vertex) {
 	int vertex_successor;
 	edge *tmp_edge_ptr;
 
+	initialize_search(graph_ptr);
 	init_queue(&q_vertices);
 	enqueue(&q_vertices, start_vertex);
 	is_discovered[start_vertex] = true;
@@ -67,4 +71,35 @@ void find_path(int start_vertex, int end_vertex, int parents[]) {
 		find_path(start_vertex, parents[end_vertex], parents);
 		printf(" %d", end_vertex);
 	}
+}
+
+void depth_first_search(graph *graph_ptr, int start_vertex) {
+	edge *tmp_edge_ptr;
+	int vertex_successor;
+	int time = 0;
+
+	is_discovered[start_vertex] = true;
+	time = time + 1;
+
+	process_vertex_early(start_vertex);
+	is_processed[start_vertex] = true;
+
+	tmp_edge_ptr = graph_ptr->edges[start_vertex];
+	while (tmp_edge_ptr != NULL) {
+		vertex_successor = tmp_edge_ptr->vertex_connected;
+		if (is_discovered[vertex_successor] == false) {
+			parent[vertex_successor] = start_vertex;
+			process_edge(start_vertex, vertex_successor);
+			depth_first_search(graph_ptr, vertex_successor);
+		}
+		else if ((!is_processed[vertex_successor]) || graph_ptr->is_directed)
+			process_edge(start_vertex, vertex_successor);
+
+		tmp_edge_ptr = tmp_edge_ptr->next;
+	}
+
+	process_vertex_late(start_vertex);
+
+	time = time + 1;
+	exit_time[start_vertex] = time;
 }

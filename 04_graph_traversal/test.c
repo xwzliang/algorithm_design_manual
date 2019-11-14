@@ -80,10 +80,30 @@ void test_find_path() {
 	TEST_ASSERT_EQUAL_STRING(expect, buf);
 }
 
+void test_depth_first_search() {
+	int start_vertex = 1;
+	initialize_search(&g);
+	stdout_capture_start();
+	depth_first_search(&g, start_vertex);
+	stdout_capture_finish();
+
+	char *expect =
+		"processed vertex 1\n"
+		"processed edge (1, 4)\n"
+		"processed vertex 4\n"
+		"processed edge (4, 3)\n"
+		"processed vertex 3\n"
+		"processed edge (3, 2)\n"
+		"processed vertex 2\n"
+	;
+	TEST_ASSERT_EQUAL_STRING(expect, buf);
+}
+
 int main() {
 	UNITY_BEGIN();
 	RUN_TEST(test_build_graph);
 	RUN_TEST(test_breadth_first_search);
 	RUN_TEST(test_find_path);
+	RUN_TEST(test_depth_first_search);
 	return UNITY_END();
 }
