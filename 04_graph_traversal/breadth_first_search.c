@@ -59,3 +59,12 @@ void breadth_first_search(graph *graph_ptr, int start_vertex) {
 		process_vertex_late(vertex);
 	}
 }
+
+void find_path(int start_vertex, int end_vertex, int parents[]) {
+	if ((start_vertex == end_vertex) || (end_vertex == -1))
+		printf("\n%d", start_vertex);
+	else {
+		find_path(start_vertex, parents[end_vertex], parents);
+		printf(" %d", end_vertex);
+	}
+}

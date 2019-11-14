@@ -68,9 +68,22 @@ void test_breadth_first_search() {
 	TEST_ASSERT_EQUAL_STRING(expect, buf);
 }
 
+void test_find_path() {
+	extern int parent[];
+	stdout_capture_start();
+	find_path(1, 3, parent);
+	stdout_capture_finish();
+
+	char *expect =
+		"\n1 4 3"
+	;
+	TEST_ASSERT_EQUAL_STRING(expect, buf);
+}
+
 int main() {
 	UNITY_BEGIN();
 	RUN_TEST(test_build_graph);
 	RUN_TEST(test_breadth_first_search);
+	RUN_TEST(test_find_path);
 	return UNITY_END();
 }
