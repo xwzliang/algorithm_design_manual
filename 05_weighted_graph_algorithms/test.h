@@ -10,3 +10,4 @@ void convert_graph_edges_to_edge_arr(graph *graph_ptr, edge_pair_vertices edge_a
 int weight_compare(const void *ptr1, const void *ptr2);
 void minimum_spanning_tree_kruskal(graph *graph_ptr);
 void minimum_spanning_tree_prim(graph *graph_ptr, int start_vertex);
+void shortest_path_dijkstra(graph *graph_ptr, int start_vertex);

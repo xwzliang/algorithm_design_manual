@@ -83,10 +83,28 @@ void test_minimum_spanning_tree_kruskal() {
 	TEST_ASSERT_EQUAL_STRING(expect, buf);
 }
 
+void test_shortest_path_dijkstra() {
+	int start_vertex = 1;
+	stdout_capture_start();
+	shortest_path_dijkstra(&g, start_vertex);
+	stdout_capture_finish();
+
+	char *expect =
+		"-1 1\n"
+		"1 6\n"
+		"1 2\n"
+		"1 5\n"
+		"2 3\n"
+		"5 4\n"
+	;
+	TEST_ASSERT_EQUAL_STRING(expect, buf);
+}
+
 int main() {
 	UNITY_BEGIN();
 	RUN_TEST(test_build_graph);
 	RUN_TEST(test_minimum_spanning_tree_prim);
 	RUN_TEST(test_minimum_spanning_tree_kruskal);
+	RUN_TEST(test_shortest_path_dijkstra);
 	return UNITY_END();
 }
