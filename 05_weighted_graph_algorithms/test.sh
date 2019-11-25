@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 rm -f a.out
-get_h graph.c minimum_spanning_tree_prim.c > test.h
+get_h graph.c minimum_spanning_tree_*.c > test.h
 gcc -I $unity_path $unity_path/unity.c *.c
 ./a.out <<-EOF
 	6 7

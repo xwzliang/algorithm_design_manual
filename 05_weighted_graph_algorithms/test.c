@@ -68,9 +68,25 @@ void test_minimum_spanning_tree_prim() {
 	TEST_ASSERT_EQUAL_STRING(expect, buf);
 }
 
+void test_minimum_spanning_tree_kruskal() {
+	stdout_capture_start();
+	minimum_spanning_tree_kruskal(&g);
+	stdout_capture_finish();
+
+	char *expect =
+		"1 6\n"
+		"3 4\n"
+		"1 2\n"
+		"2 5\n"
+		"2 3\n"
+	;
+	TEST_ASSERT_EQUAL_STRING(expect, buf);
+}
+
 int main() {
 	UNITY_BEGIN();
 	RUN_TEST(test_build_graph);
 	RUN_TEST(test_minimum_spanning_tree_prim);
+	RUN_TEST(test_minimum_spanning_tree_kruskal);
 	return UNITY_END();
 }
