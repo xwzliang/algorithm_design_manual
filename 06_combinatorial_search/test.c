@@ -27,6 +27,7 @@ void stdout_capture_finish() {
 	read(pipefd[0], buf, 1000);
 }
 
+/*
 void test_subsets() {
 	int range_size = 3;
 	stdout_capture_start();
@@ -45,9 +46,28 @@ void test_subsets() {
 	;
 	TEST_ASSERT_EQUAL_STRING(expect, buf);
 }
+*/
+
+void test_permutations() {
+	int range_size = 3;
+	stdout_capture_start();
+	generate_permutations(range_size);
+	stdout_capture_finish();
+
+	char *expect =
+	"[ 1 2 3 ]\n"
+	"[ 1 3 2 ]\n"
+	"[ 2 1 3 ]\n"
+	"[ 2 3 1 ]\n"
+	"[ 3 1 2 ]\n"
+	"[ 3 2 1 ]\n"
+	;
+	TEST_ASSERT_EQUAL_STRING(expect, buf);
+}
 
 int main() {
 	UNITY_BEGIN();
-	RUN_TEST(test_subsets);
+	/* RUN_TEST(test_subsets); */
+	RUN_TEST(test_permutations);
 	return UNITY_END();
 }

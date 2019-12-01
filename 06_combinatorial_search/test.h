@@ -4,4 +4,4 @@ void construct_candidates(int solution_vector[], int element_num, int range_size
 void process_solution(int solution_vector[], int element_num, int range_size);
 void make_move(int solution_vector[], int element_num, int range_size);
 void unmake_move(int solution_vector[], int element_num, int range_size);
-void generate_subsets(int range_size);
+void generate_permutations(int range_size);
