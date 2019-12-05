@@ -52,6 +52,10 @@ void test_fib_by_dynamic_programming() {
 	printf("time used: %fs\n", time_spent);
 }
 
+void test_binomial_coefficient() {
+	TEST_ASSERT_EQUAL(70, binomial_coefficient(8, 4));
+}
+
 
 int main() {
 	UNITY_BEGIN();
@@ -64,5 +68,6 @@ int main() {
 	/* test.c:59:test_fib_by_caching:PASS */
 	/* time used: 0.000009s */
 	/* test.c:60:test_fib_by_dynamic_programming:PASS */
+	RUN_TEST(test_binomial_coefficient);
 	return UNITY_END();
 }
