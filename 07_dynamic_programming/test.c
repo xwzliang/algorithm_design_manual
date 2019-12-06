@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <time.h>
+#include <string.h>
 #include <unity.h>
 #include "test.h"
 
@@ -56,6 +57,20 @@ void test_binomial_coefficient() {
 	TEST_ASSERT_EQUAL(70, binomial_coefficient(8, 4));
 }
 
+void test_edit_distance() {
+	char *str_a = "thou shalt not";
+	char *str_b = "you should not";
+
+	TEST_ASSERT_EQUAL(5, edit_dist(str_a, str_b));
+
+	stdout_capture_start();
+	print_edit_solution_path(str_a, str_b, strlen(str_a)-1, strlen(str_b)-1);
+	stdout_capture_finish();
+
+	char *expect = "DSMMMMMISMSMMMM";
+	TEST_ASSERT_EQUAL_STRING(expect, buf);
+}
+
 
 int main() {
 	UNITY_BEGIN();
@@ -69,5 +84,6 @@ int main() {
 	/* time used: 0.000009s */
 	/* test.c:60:test_fib_by_dynamic_programming:PASS */
 	RUN_TEST(test_binomial_coefficient);
+	RUN_TEST(test_edit_distance);
 	return UNITY_END();
 }
