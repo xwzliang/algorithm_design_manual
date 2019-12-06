@@ -36,14 +36,7 @@ void insert_space_to_beginning_of_string(char *str, char *str_raw) {
 	str[0] = 32;
 	for (i = 1; i < strlen(str_raw)+1; i++) {
 		str[i] = str_raw[i-1];
-		/* printf("%c\n", str_return[i]); */
 	}
-	/* printf("%s\n", *str); */
-	
-	
-	/* strcpy(str_return, " "); */
-	/* memset(str_return, ' ', 1); */
-	/* strcpy(str_return + 1, str); */
 }
 
 int match_or_substitution_cost(char a, char b) {
