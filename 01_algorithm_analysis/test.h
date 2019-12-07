@@ -1,3 +1,3 @@
-void selection_sort(int s[], int n);
-void insertion_sort(int s[], int n);
-int findmatch(char * pattern, char * text);
+void selection_sort();
+void insertion_sort();
+int findmatch();
