@@ -71,6 +71,24 @@ void test_edit_distance() {
 	TEST_ASSERT_EQUAL_STRING(expect, buf);
 }
 
+void test_minimum_sum_partition() {
+#define NUM_ELEMENTS 9
+	int num_sub_arrays = 3;
+	int input_arr[NUM_ELEMENTS+1] = {0,1,2,3,4,5,6,7,8,9};	// element with index 0 is dumb value
+	int i;
+	
+	stdout_capture_start();
+	minimum_sum_partition(input_arr, NUM_ELEMENTS, num_sub_arrays);
+	stdout_capture_finish();
+
+	char *expect =
+		" 1  2  3  4  5 \n"
+		" 6  7 \n"
+		" 8  9 \n"
+	;
+	TEST_ASSERT_EQUAL_STRING(expect, buf);
+}
+
 
 int main() {
 	UNITY_BEGIN();
@@ -85,5 +103,6 @@ int main() {
 	/* test.c:60:test_fib_by_dynamic_programming:PASS */
 	RUN_TEST(test_binomial_coefficient);
 	RUN_TEST(test_edit_distance);
+	RUN_TEST(test_minimum_sum_partition);
 	return UNITY_END();
 }
