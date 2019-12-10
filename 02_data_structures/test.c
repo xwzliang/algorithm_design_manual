@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <unity.h>
 #include "item_type.h"
-#include "03_priority_queue.h"
-#include "04_queue.h"
+#include "priority_queue.h"
+#include "queue.h"
 #include "test.h"
 
 void setUp() {}

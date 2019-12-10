@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "item_type.h"
-#include "03_priority_queue.h"
+#include "priority_queue.h"
 /*
  * We will store the root of the tree in the first position of the array, and its left and right children in the second and third poisions, respectively.
  * We assume that the array starts with index 1 to simplify matters.

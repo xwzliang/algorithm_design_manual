@@ -1,11 +1,3 @@
-typedef struct list {
-	item_type item;		// data item
-	struct list *next;		// point to successor
-} list;
-list *search_list();
-void insert_list();
-list *predecessor_list();
-void delete_list();
 typedef struct tree {
 	item_type item;		// data item
 	struct tree *parent;	// pointer to parent
@@ -17,6 +9,14 @@ void insert_tree();
 tree *find_minimum();
 void traverse_tree();
 void process_item();
+typedef struct list {
+	item_type item;		// data item
+	struct list *next;		// point to successor
+} list;
+list *search_list();
+void insert_list();
+list *predecessor_list();
+void delete_list();
 int pq_parent();
 int pq_young_child();
 void pq_swap();

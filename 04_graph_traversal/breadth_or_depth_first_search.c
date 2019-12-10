@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "item_type.h"
-#include "../02_data_structures/04_queue.h"
+#include "../02_data_structures/queue.h"
 #include "queue.h"
 #include "graph.h"
 

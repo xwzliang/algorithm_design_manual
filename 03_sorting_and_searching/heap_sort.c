@@ -1,5 +1,5 @@
 #include "item_type.h"
-#include "../02_data_structures/03_priority_queue.h"
+#include "../02_data_structures/priority_queue.h"
 #include "priority_queue.h"
 
 void heap_sort(item_type item_arr[], int item_num) {

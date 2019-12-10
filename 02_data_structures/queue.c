@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "item_type.h"
-#include "04_queue.h"
+#include "queue.h"
 
 void init_queue(queue *q) {
 	q->head = 0;

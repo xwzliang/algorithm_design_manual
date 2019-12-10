@@ -1,5 +1,5 @@
 #include "item_type.h"
-#include "../02_data_structures/04_queue.h"
+#include "../02_data_structures/queue.h"
 #include "queue.h"
 
 void merge(item_type item_arr[], int index_low, int index_middle, int index_high) {
