@@ -9,6 +9,9 @@ static int stdout_bk; 	// is fd for stdout backup
 static int pipefd[2];
 static char buf[1001];
 
+void setUp() {}
+void tearDown() {}
+
 void stdout_capture_start() {
 	fflush(stdout);		//flushall();
 	stdout_bk = dup(fileno(stdout));

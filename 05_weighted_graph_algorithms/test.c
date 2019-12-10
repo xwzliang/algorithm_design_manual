@@ -10,6 +10,9 @@ static char buf[1001];
 
 static graph g;
 
+void setUp() {}
+void tearDown() {}
+
 void stdout_capture_start() {
 	fflush(stdout);		//flushall();
 	stdout_bk = dup(fileno(stdout));

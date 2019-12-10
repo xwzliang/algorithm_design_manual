@@ -2,6 +2,9 @@
 #include <unity.h>
 #include "test.h"
 
+void setUp() {}
+void tearDown() {}
+
 void test_selection_sort() {
 	int arr_num = 10;
 	int arr[] = {5, 8, 9, 2, 3, 1, 0, 7, 4, 6};

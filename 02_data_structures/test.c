@@ -5,6 +5,9 @@
 #include "04_queue.h"
 #include "test.h"
 
+void setUp() {}
+void tearDown() {}
+
 void test_linked_list() {
 	list test_list = {5, NULL};
 	list *head = &test_list;
